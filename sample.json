@@ -1,0 +1,30 @@
+[
+  {
+    "path": "/users",
+    "data": [
+      {
+        "name": "User",
+        "powerLevel": "100"
+      }
+    ]
+  },
+  {
+    "path": "/user/:id",
+    "data": {
+      "name": "Josin",
+      "powerLevel": "9001"
+    }
+  },
+  {
+    "path": "/games",
+    "count": 3,
+    "data": [
+      {
+        "name": "Mario"
+      },
+      {
+        "name": "Pokemon"
+      }
+    ]
+  }
+]
