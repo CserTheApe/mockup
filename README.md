@@ -1,7 +1,5 @@
 # Mockup
 
----
-
 Create a mock server using a JSON file.
 
 Pass a JSON file with the api schema to the program to generate a server corresponding to the json schema. The file must contain an array of objects corresponding to each endpoint you want.
@@ -42,6 +40,8 @@ If `data` is an array, then the JSON response will be an array populated with th
 The `count` parameter will determine the number of objects returned.
 
 If `count` exceeds the number of objects in the input array, iterative duplication will be used to fill the object count.
+
+##### Example
 
 ```
 {
