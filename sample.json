@@ -11,7 +11,7 @@
   {
     "path": "/user/:id",
     "data": {
-      "name": "Josin",
+      "name": "Player-{id}",
       "powerLevel": "9001"
     }
   },
@@ -20,10 +20,33 @@
     "count": 3,
     "data": [
       {
-        "name": "Mario"
+        "name": "Mario-[{count}]"
       },
       {
-        "name": "Pokemon"
+        "name": "Pokemon-[{count}]"
+      }
+    ]
+  },
+  {
+    "path": "/gamers/:num",
+    "count": 4,
+    "data": [
+      {
+        "name": "Casual Player",
+        "games": ["Mario-{num}", "Poke{num}mon"]
+      },
+      {
+        "name": "NoobMaster {num}",
+        "games": [
+          {
+            "name": "Pukemon",
+            "timesPlayed": 6
+          },
+          {
+            "name": "Barfio{num}",
+            "timesPlayed": 11
+          }
+        ]
       }
     ]
   }

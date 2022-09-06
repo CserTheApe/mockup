@@ -20,6 +20,35 @@ function populateArray(item) {
   return finalData;
 }
 
+function parameterSubstitution(inputData, placeholder, substitute) {
+  if (!inputData) return;
+  try {
+    if (Array.isArray(inputData)) {
+      inputData.forEach((item, index) => {
+        if (typeof item === "object")
+          parameterSubstitution(item, placeholder, substitute);
+        else
+          inputData[index] = inputData[index].replace(placeholder, substitute); //array of strings
+      });
+    } else {
+      for (const itemKey of Object.keys(inputData)) {
+        if (typeof inputData[itemKey] === "object") {
+          parameterSubstitution(inputData[itemKey], placeholder, substitute);
+        } else
+          inputData[itemKey] = inputData[itemKey].replace(
+            placeholder,
+            substitute
+          );
+      }
+    }
+  } catch (e) {
+    if (e.name !== "TypeError") {
+      console.log("Error in parameter substitution");
+      console.log("name", e.name);
+    }
+  }
+}
+
 function getData() {
   const filename = process.argv[2];
 
@@ -35,8 +64,15 @@ function startServer(data) {
       ? populateArray(item)
       : item.data;
 
-    app.get(item.path, (_req, res) => {
-      res.json(loadedData);
+    app.get(item.path, (req, res) => {
+      let responseData = JSON.parse(JSON.stringify(loadedData));
+
+      const paramKeys = Object.keys(req.params);
+      for (const key of paramKeys) {
+        const placeholder = `{${key}}`;
+        parameterSubstitution(responseData, placeholder, req.params[key]);
+      }
+      res.json(responseData);
     });
   }
 
