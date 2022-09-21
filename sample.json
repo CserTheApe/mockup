@@ -20,10 +20,10 @@
     "count": 3,
     "data": [
       {
-        "name": "Mario-[{count}]"
+        "name": "Mario"
       },
       {
-        "name": "Pokemon-[{count}]"
+        "name": "Pokemon"
       }
     ]
   },

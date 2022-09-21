@@ -2,6 +2,7 @@ const fs = require("fs");
 const express = require("express");
 
 const DEFAULT_COUNT = 10;
+const PORT = 8086;
 
 function populateArray(item) {
   const count = isNaN(parseInt(item.count))
@@ -60,35 +61,58 @@ function startServer(data) {
   const app = express();
 
   for (const item of data) {
-    const loadedData = Array.isArray(item.data)
-      ? populateArray(item)
-      : item.data;
+    try {
+      const loadedData = Array.isArray(item.data)
+        ? populateArray(item)
+        : item.data;
 
-    app.get(item.path, (req, res) => {
-      let responseData = JSON.parse(JSON.stringify(loadedData));
+      app.get(item.path, (req, res) => {
+        let responseData = JSON.parse(JSON.stringify(loadedData));
 
-      const paramKeys = Object.keys(req.params);
-      for (const key of paramKeys) {
-        const placeholder = `{${key}}`;
-        parameterSubstitution(responseData, placeholder, req.params[key]);
-      }
-      res.json(responseData);
-    });
+        const paramKeys = Object.keys(req.params);
+        for (const key of paramKeys) {
+          const placeholder = `{${key}}`;
+          parameterSubstitution(responseData, placeholder, req.params[key]);
+        }
+        res.json(responseData);
+      });
+    } catch (e) {
+      console.log("Error in JSON schema for an endpoint");
+    }
   }
 
-  app.listen(9000, () => console.log("Listening on port 9000"));
+  app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 }
 
-function main() {
+function serve(data) {
+  try {
+    if (typeof data === "string") {
+      data = JSON.parse(data);
+    }
+
+    startServer(data);
+  } catch (err) {
+    console.log(`Mockup - ${err.name}`);
+    console.log(err.message);
+    console.log("Make sure you've passed a JSON file with a valid schema");
+  }
+}
+
+function standAlone() {
   try {
     const data = getData();
     console.log(data);
 
     startServer(data);
   } catch (err) {
-    console.log(err.name);
+    console.log(`Mockup - ${err.name}`);
     console.log(err.message);
+    console.log("Make sure you've passed a JSON file with a valid schema");
   }
 }
 
-main();
+if (require.main === module) {
+  standAlone();
+}
+
+module.exports = serve;

@@ -1,17 +1,33 @@
 # Mockup
 
-Create a mock server using a JSON file.
+Create a mock server for GET requests using a JSON file.
 
-Pass a JSON file with the api schema to the program to generate a server corresponding to the json schema. The file must contain an array of objects corresponding to each endpoint you want.
+---
 
 Run the program as follows:
-`node mockup.js sample.json`
+`node mockup sample.json`
 
-Replace `sample.json` with the path to the file containing your schema
+Replace `sample.json` with the path to the file containing your schema.
+
+<h4>OR</h4>
+
+Install and use as a package with `npm install mockup`
+
+Use it in your program as:
+
+```
+const serve = require('mockup');
+
+serve(data);
+```
+
+Here, data is an object array or a JSON string of one.
 
 ---
 
 ## JSON schema
+
+The JSON file, string or object passed must be an array of objects (corresponding to each API endpoint) with the relevant parameters described below.
 
 ### Parameters
 
