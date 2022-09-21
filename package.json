@@ -10,8 +10,12 @@
     "type": "git",
     "url": "git+https://github.com/CserTheApe/mockup.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "mockup",
+    "server",
+    "GET"
+  ],
+  "author": "CserTheApe",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/CserTheApe/mockup/issues"

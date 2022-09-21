@@ -1,4 +1,4 @@
-# Mockup
+# Mockup [![NPM version](https://img.shields.io/npm/v/mockup-get-server.svg?style=flat)](https://www.npmjs.com/package/mockup-get-server) [![NPM monthly downloads](https://img.shields.io/npm/dm/mockup-get-server.svg?style=flat)](https://npmjs.org/package/mockup-get-server) [![NPM total downloads](https://img.shields.io/npm/dt/mockup-get-server.svg?style=flat)](https://npmjs.org/package/mockup-get-server)
 
 Create a mock server for GET requests using a JSON file.
 
@@ -11,12 +11,12 @@ Replace `sample.json` with the path to the file containing your schema.
 
 <h4>OR</h4>
 
-Install and use as a package with `npm install mockup`
+Install and use as a package with `npm install mockup-get-server`
 
 Use it in your program as:
 
 ```
-const serve = require('mockup');
+const serve = require('mockup-get-server');
 
 serve(data);
 ```
