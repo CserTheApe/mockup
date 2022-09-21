@@ -1,7 +1,7 @@
 {
-  "name": "mockup",
+  "name": "mockup-get-server",
   "version": "1.0.0",
-  "description": "Create a mock server using a JSON file.",
+  "description": "Create a mock server for GET requests using a JSON file.",
   "main": "mockup.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
