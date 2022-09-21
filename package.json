@@ -1,6 +1,6 @@
 {
   "name": "mockup-get-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Create a mock server for GET requests using a JSON file.",
   "main": "mockup.js",
   "scripts": {
